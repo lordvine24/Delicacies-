@@ -1,0 +1,179 @@
+/* Color Palette: Red (#e31837), Black (#1a1a1a), White (#ffffff) */
+
+.navbar-container {
+  width: 100%;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Layer 1: Top Thin Bar --- */
+.top-bar {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 6%;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.brand-name {
+  color: #e31837;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.contact-info span {
+  margin-left: 25px;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+/* --- Layer 2: Main Menu --- */
+.menu-bar {
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6%;
+  height: 70px;
+  border-bottom: 4px solid #e31837;
+}
+
+.nav-spacer { flex: 0.5; } /* Adjusted to give more room to links */
+.nav-links { flex: 3; display: flex; justify-content: center; list-style: none; margin: 0; padding: 0; align-items: center; }
+.nav-actions { flex: 1.5; display: flex; justify-content: flex-end; gap: 15px; align-items: center; }
+
+.nav-item {
+  position: relative;
+  padding: 0 15px;
+  height: 70px;
+  line-height: 70px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover { color: #e31837; }
+
+/* --- NEW: Cart Icon Styling --- */
+.cart-link {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  color: #e31837 !important; /* Always red to signify action */
+  font-weight: 800 !important;
+}
+
+.nav-icon {
+  font-size: 18px;
+  margin-top: -2px; /* Visual alignment */
+}
+
+/* --- NEW: User Profile Section --- */
+.user-profile-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 15px;
+  border-left: 1px solid #eee;
+}
+
+.user-icon {
+  font-size: 22px;
+  color: #1a1a1a;
+}
+
+.user-name-text {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logout-nav-btn {
+  background: transparent;
+  border: 1px solid #e31837;
+  color: #e31837;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+.logout-nav-btn:hover {
+  background: #e31837;
+  color: white;
+}
+
+/* --- Dropdown Design --- */
+.dropdown-menu {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: white;
+  min-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-top: 4px solid #e31837;
+  line-height: normal; /* Resets the 70px line height from parent */
+}
+
+.nav-item:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu ul { list-style: none; padding: 10px 0; margin: 0; }
+.dropdown-menu li { padding: 12px 20px; font-size: 13px; color: #444; transition: 0.2s; }
+.dropdown-menu li:hover { background-color: #fff5f5; color: #e31837; padding-left: 25px; }
+
+/* --- Auth Buttons --- */
+.login-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #1a1a1a;
+}
+
+.signup-btn {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.signup-btn:hover {
+  background-color: #e31837;
+  transform: translateY(-2px);
+}
