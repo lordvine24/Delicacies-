@@ -130,7 +130,7 @@ const Home = () => {
           </p>
           <div style={{ display: 'flex', gap: '20px' }}>
             <button className="signup-btn" onClick={scrollToContact} style={{ padding: '18px 40px', fontSize: '15px', fontWeight: '700' }}>BOOK US</button>
-            <button className="login-btn" style={{ padding: '18px 40px', fontSize: '15px', fontWeight: '700' }}>VIEW MENU</button>
+            <button className="login-btn" onClick={() => navigate('/menu')} style={{ padding: '18px 40px', fontSize: '15px', fontWeight: '700' }}>VIEW MENU</button>
           </div>
         </div>
         <div className="hero-image-wrapper" style={{ flex: '1', minWidth: '400px', position: 'relative' }}>
@@ -188,7 +188,7 @@ const Home = () => {
                 <li><span>Nyeri Mukimo</span> <strong>KES 850</strong></li>
                 <li><span>Kienyeji Chicken</span> <strong>KES 1,500</strong></li>
               </ul>
-              <button className="menu-nav-btn" onClick={() => navigate('/menu/food')}>VIEW ALL FOOD</button>
+              <button className="menu-nav-btn" onClick={() => navigate('/menu')}>VIEW ALL FOOD</button>
             </div>
 
             {/* BURGERS */}
@@ -200,7 +200,7 @@ const Home = () => {
                 <li><span>Crispy Chicken</span> <strong>KES 800</strong></li>
                 <li><span>Double Cheese</span> <strong>KES 1,100</strong></li>
               </ul>
-              <button className="menu-nav-btn" onClick={() => navigate('/menu/burgers')}>VIEW BURGERS</button>
+              <button className="menu-nav-btn" onClick={() => navigate('/menu')}>VIEW BURGERS</button>
             </div>
 
             {/* VEGETABLES */}
@@ -212,7 +212,7 @@ const Home = () => {
                 <li><span>Traditional Managu</span> <strong>KES 450</strong></li>
                 <li><span>Stir-fry Medley</span> <strong>KES 500</strong></li>
               </ul>
-              <button className="menu-nav-btn" onClick={() => navigate('/menu/vegetables')}>VIEW VEGGIES</button>
+              <button className="menu-nav-btn" onClick={() => navigate('/menu')}>VIEW VEGGIES</button>
             </div>
 
             {/* DRINKS */}
@@ -224,7 +224,7 @@ const Home = () => {
                 <li><span>Artisan Coffee</span> <strong>KES 300</strong></li>
                 <li><span>Kenyan Tea</span> <strong>KES 200</strong></li>
               </ul>
-              <button className="menu-nav-btn" onClick={() => navigate('/menu/drinks')}>VIEW DRINKS</button>
+              <button className="menu-nav-btn" onClick={() => navigate('/menu')}>VIEW DRINKS</button>
             </div>
           </div>
         </section>

@@ -1,58 +1,33 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-// Components
-import Navbar from "./components/Navbar";
+// --- COMPONENTS ---
+import Navbar from './components/Navbar'; // Adjust this path to where your Navbar file is
 
-// Public & Client Pages
-import Home from "./pages/Home"; 
-import About from "./pages/About"; 
-import Book from "./pages/Book"; 
-import Signup from "./pages/Signup"; 
-import Login from "./pages/Login"; 
-import MyBookings from "./pages/mybookings"; 
+// --- CLIENT PAGES ---
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Book from './pages/Book';
+import FoodMenu from './pages/FoodMenu';
 
-// Admin Pages (Ensure these paths match your folder structure)
-import HomeAdmin from "./pages/admin/homeadmin";
+// --- ADMIN PAGES ---
+import HomeAdmin from './pages/admin/homeadmin'; 
+import MealsAdmin from './pages/admin/mealsadmin'; 
 
-import "./index.css";
-
-// Helper: Scroll to top on every route change
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
-
-// This component handles the conditional visibility of Global UI
+// This helper component handles the logic of when to show the Navbar
 const LayoutWrapper = ({ children }) => {
   const location = useLocation();
   
-  // Logic: Hide Navbar/Footer if the URL starts with /admin
-  const isAdminPage = location.pathname.startsWith('/admin');
+  // Define paths where the CLIENT Navbar should NOT appear
+  const hideNavbarOn = ['/admin/home', '/mealsadmin', '/login', '/signup'];
+  const shouldShowNavbar = !hideNavbarOn.includes(location.pathname);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <ScrollToTop />
-      
-      {/* Show Navbar only for regular users */}
-      {!isAdminPage && <Navbar />}
-
-      <main className="content" style={{ flex: '1', marginTop: !isAdminPage ? '110px' : '0' }}>
-        {/* Note: Margin-top 110px accounts for your fixed double-layer navbar height */}
-        {children}
-      </main>
-
-      {/* Show Footer only for regular users */}
-      {!isAdminPage && (
-        <footer style={{ backgroundColor: '#1a1a1a', color: 'white', textAlign: 'center', padding: '30px 0', borderTop: '4px solid #e31837' }}>
-          <p style={{ fontWeight: 'bold', letterSpacing: '1px' }}>© 2026 OKOTH'S DELICACIES</p>
-          <p style={{ fontSize: '12px', opacity: 0.6, marginTop: '5px' }}>Quality Catering & Gourmet Meals</p>
-        </footer>
-      )}
-    </div>
+    <>
+      {shouldShowNavbar && <Navbar />}
+      {children}
+    </>
   );
 };
 
@@ -61,22 +36,21 @@ function App() {
     <Router>
       <LayoutWrapper>
         <Routes>
-          {/* --- PUBLIC ROUTES --- */}
+          {/* Client Routes - Navbar will show here */}
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} /> 
-          <Route path="/signup" element={<Signup />} /> 
-          <Route path="/login" element={<Login />} /> 
-          
-          {/* --- CLIENT SECURE ROUTES --- */}
-          <Route path="/book" element={<Book />} /> 
-          {/* This is linked to the "CART" icon in your Navbar */}
-          <Route path="/my-bookings" element={<MyBookings />} /> 
-          
-          {/* --- ADMIN DASHBOARD --- */}
-          <Route path="/admin/home" element={<HomeAdmin />} /> 
-          
-          {/* --- GLOBAL REDIRECT --- */}
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/book" element={<Book />} />
+          <Route path="/menu" element={<FoodMenu />} />
+
+          {/* Auth Routes - Navbar is hidden here usually */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+
+          {/* Admin Routes - Navbar is hidden here */}
+          <Route path="/admin/home" element={<HomeAdmin />} />
+          <Route path="/mealsadmin" element={<MealsAdmin />} />
+
+          {/* Catch-all */}
+          <Route path="*" element={<Home />} />
         </Routes>
       </LayoutWrapper>
     </Router>
